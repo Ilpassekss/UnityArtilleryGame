@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e8e6211a9f351449e6fb8a61529e28, type: 3}
+  m_Name: BarrelData
+  m_EditorClassIdentifier: 
+  IsPhysical: 1
+  IsPenitrate: 0
+  IsAutomatic: 0
+  gunType: 4
+  IsActive: 0
+  InfinitiveAmmo: 1
+  BasicDamage: 0
+  MagazineSize: 10
+  CurrentAmmo: 10
+  FireRate: 20
+  ShootSound: {fileID: 8300000, guid: 4ec7507bb4bf0274499771ce2324f6dd, type: 3}
+  RunOutOfAmmoSound: {fileID: 0}
+  RaysPerShooot: 0
+  MaxYAxisScutter: 0
+  MaxXAxisScutter: 0
+  BulletForse: 50
+  MaxShootDistance: 1000
+  muzzleFlash: {fileID: 0}
+  ShootTrail: {fileID: 0}

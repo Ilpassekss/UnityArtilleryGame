@@ -1,0 +1,70 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class EnemyExplosionObject : MonoBehaviour
+{
+    [SerializeField] private GameObject explosionEffect; 
+
+    [SerializeField] private AudioClip ExplosionSound;
+
+    [SerializeField] private float explosionForce = 1000f;
+    [SerializeField] private float explosionRadius = 10f;
+    [SerializeField] private float upwardsModifier = 1.0f;
+
+    [SerializeField] private float maxDamage = 100f;
+    [SerializeField] private float minDamage = 20f;
+    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Explode();
+    }
+    
+    private void Explode()
+    {
+        
+        // if (explosionEffect != null)
+        // {
+        //     Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        // }
+
+        if(ExplosionSound != null)
+        {
+            AudioManager.AudioManagerInstance.PlaySound(ExplosionSound);
+        }
+        
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+
+        Debug.Log(colliders.Count());
+        
+        foreach (Collider hit in colliders)
+        {
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+            
+            if (rb != null)
+            {
+                
+                rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, upwardsModifier);
+            }
+
+            if(hit.isTrigger)
+            {
+                HealthStats targetHealth = hit.transform.GetComponent<PlayerHealthStats>();
+
+                if(targetHealth != null)
+                {
+                    float distance = Vector3.Distance(transform.position, hit.transform.position);
+                    int damage = (int)Mathf.Lerp(maxDamage, minDamage, distance / explosionRadius);
+                    targetHealth.TakeDamage(damage);
+                }  
+            }
+        }
+
+            
+        
+        Destroy(gameObject);
+    }
+}
+
