@@ -4,7 +4,7 @@ This is a simple artillery defense game made in Unity.
 
 ## Gameplay
 
-You control a stationary artillery unit and must defend yourself from waves of incoming tanks. Tanks approach from multiple directions and must be destroyed before they reach the firing radius.
+You control a artillery unit and must defend yourself from waves of incoming tanks. Tanks approach from multiple directions and must be destroyed before they reach the firing radius.
 
 - Tanks are destroyed in 1–2 shots.
 - You have a **3-second reload time** between shots.
